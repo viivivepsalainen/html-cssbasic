@@ -1,0 +1,213 @@
+<head>
+    <link href="tyyli.css" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,900&display=swap"
+        rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300&display=swap" rel="stylesheet">
+
+    <script>
+        function changePage(id) {
+            var p1 = document.getElementById('sivu1');
+            var p2 = document.getElementById("sivu2");
+
+            if (id == "etusivu") {
+                p1.style.visibility = "visible";
+                p2.style.visibility = "hidden";
+                p1.style.height = "auto";
+                p2.style.height = "0";
+            }
+
+            else if (id == "kuva") {
+                p1.style.visibility = "hidden";
+                p2.style.visibility = "visible";
+                p1.style.height = "0";
+                p2.style.height = "auto";
+            }
+        }
+    </script>
+
+
+
+
+    <title>Viivin reissut</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+<body>
+
+    <!-- <script>
+        function changePage(id) {
+            var p1 = document.getElementById("sivu1");
+            var p2 = document.getElementById("sivu2");
+
+            if (id == "etusivu") {
+                p1.style.visibility = "visible";
+                p2.style.visibility = "hidden";
+                p1.style.height = "auto";
+                p2.style.height = "0";
+            }
+
+            else if (id == "kuva") {
+                p1.style.visibility = "hidden";
+                p2.style.visibility = "visible";
+                p1.style.height = "0";
+                p2.style.height = "auto";
+            }
+        }
+    </script> -->
+
+    <main>
+        <!--Kontti navigaatiolle-->
+        <div class="kontti">
+            <div id="navi">
+                <ul id="nav">
+                    <li><a href="#" onClick="changePage('etusivu');">Egypti</a></li>
+                    <li><a href="#" onClick="changePage('kuva');">Kuva Egyptistä</a></li>
+                </ul>
+            </div>
+
+            <!--Kontti sivuille-->
+            <div id="sivut">
+
+                <!-- Sivu 1 -->
+                <div id="sivu1">
+                    <h1>Egypti</h1>
+
+                    <header>
+                        Matkakertomuksia
+                    </header>
+
+                    <p>Aina kun Egyptin turismi näyttäisi olevan toipumassa, tapahtuu jotain uutta, mikä karkottaa
+                        turistit.
+                        <br>
+                        Matkailun vähyys Egyptissä tarkoittaa myös sitä, ettei Egyptin nähtävyyksillä ole ruuhkaa. Ja
+                        samalla tulee tehtyä hyvää: köyhän maan talous tarvitsee matkailijoita.
+
+                        Syynä matkojen päättymiseen oli Egyptin heikentynyt turvallisuustilanne. Mutta tilanne on
+                        vihdoin muuttunut. Jo useamman vuoden ajan matkustamista Egyptiin on pidetty turvallisena, joten
+                        Egyptin paluu matkatoimistojen listoille on ymmärrettävää.
+                        <br>
+                    </p>
+                    <h2>Egyptin nähtävyydet </h2>
+
+                    <p> Egyptin kuuluisin nähtävyys on tietenkin Kairon edustalla sijaitsevat Gizan pyramidit, ainoa
+                        jäljelle jäänyt muisto maailman seitsemästä ihmeestä antiikin ajoilta. Ja todellinen ihme
+                        pyramidit ovatkin – ne olivat lähes 4000 vuoden ajan maailman korkeimpia rakennuksia.
+                        Pyramidien ohella Kairo on itsessäänkin kiehtova nähtävyys. Kairo tuntuu monella tapaa
+                        mahdottomalta kaupungilta – sitä ei ole suunniteltu nykyiselle 18 miljoonalle asukkaalle.
+                        Kaupunkia ei ole suunniteltu lainkaan. Kairo on kuin kaupungin muodon saanut kaaosteoria;
+                        jollakin ihmeellisellä tavalla se kuitenkin selviää päivästä toiseen.
+                    </p>
+
+                    <h3> Milloin kannattaa matkustaa? </h3>
+                    <p> Egyptin pakettimatkoja järjestetään pääsääntöisesti joulukuusta huhtikuun lopulle. Finnairin
+                        lomalennot vievät suoraan Hurghadan kansainväliselle lentokentälle.</p>
+
+                    <pre> Lähde: kerran elämässä nettisivusto </pre>
+                </div>
+
+                <!-- Sivu 2 -->
+                <div id="sivu2">
+                    <h1>Kuva Egyptistä</h1>
+
+                    <header>
+                        Kuva Egyptistä
+                    </header>
+
+                    <p> Egyptissä on paljon kameleita, jolla pääsee ratsastamaan aavikolla, ja on kokemus itsessään.</p>
+
+                    <h2> Kuvan rajaus (crop) </h2>
+                    <!--Kuvan rajaus 1-->
+                    <canvas id="kuva" width="800" height="600"></canvas>
+                    <script>
+                        var canvas = document.getElementById("kuva");
+                        var context = canvas.getContext("2d");
+                        var imageObj = new Image();
+
+                        imageObj.onload = function () {
+                            var sourceX = 20;
+                            var sourceY = 20;
+                            var sourceWidth = 1280;
+                            var sourceHeight = 782;
+                            var destWidth = sourceWidth;
+                            var destHeight = sourceHeight;
+                            var destX = (canvas.width / 2 - destWidth / 2);
+                            var destY = (canvas.height / 2 - destHeight / 2);
+
+                            context.drawImage(imageObj, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
+                        };
+
+                        imageObj.src = "egypti.jpg";
+                    </script>
+                    <h2> Peilikuva ja rajaus (mirror & crop) </h2>
+                    <!--Kuvan rajaus 2-->
+                    <canvas id="kuva2" width="800" height="600"></canvas>
+                    <script>
+                        var canvas2 = document.getElementById("kuva2");
+                        var context2 = canvas2.getContext("2d");
+                        var imageObj2 = new Image();
+
+                        imageObj2.onload = function () {
+
+                            context2.scale(-1, 1);
+
+                            var sourceX = 20;
+                            var sourceY = 20;
+                            var sourceWidth = 1280;
+                            var sourceHeight = 782;
+                            var destWidth = sourceWidth;
+                            var destHeight = sourceHeight;
+                            var destX = (canvas.width / 2 - destWidth / 2);
+                            var destY = (canvas.height / 2 - destHeight / 2);
+
+                            context2.drawImage(imageObj2, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
+                        };
+
+                        imageObj2.src = "egypti.jpg";
+                    </script>
+
+                    <h2> kuvan skaalaus (scale) </h2>
+                    <!--Kuvan rajaus 3-->
+                    <canvas id="kuva3" width="800" height="600"></canvas>
+                    <script>
+                        var canvas3 = document.getElementById("kuva3");
+                        var context3 = canvas3.getContext("2d");
+                        var imageObj3 = new Image();
+
+                        imageObj3.onload = function () {
+
+                            context3.scale(0.2, 0.2);
+
+                            var sourceX = 20;
+                            var sourceY = 20;
+                            var sourceWidth = 1280;
+                            var sourceHeight = 782;
+                            var destWidth = sourceWidth;
+                            var destHeight = sourceHeight;
+                            var destX = (canvas.width / 2 - destWidth / 2);
+                            var destY = (canvas.height / 2 - destHeight / 2);
+
+                            context3.drawImage(imageObj3, sourceX, sourceY, sourceWidth, sourceHeight, destX, destY, destWidth, destHeight);
+                        };
+
+                        imageObj3.src = "egypti.jpg";
+                    </script>
+                    <h2> Alkuperäinen kuva </h2>
+                    <!--Alkuperäinen kuva-->
+                    <img src="egypti.jpg">
+                </div>
+                </p>
+
+    </main>
+
+
+</body>
+
+</html>
